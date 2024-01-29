@@ -9,7 +9,6 @@ This action builds a RPM package for Centos7.
 ## Input options
 
 - `spec_file` : **required** Path to your _RPM spec_ file
-- `sources` : New line delimited files list that will be copied to the `SOURCES` rpmbuild directory. These files are available from the spec file.
 - `variables` : New line delimited `key=value` pairs. This get's propaged to the _rpmbuild_ command as a `--define` parameter. You can then use this as a macro inside the _spec_ file.
 
 ## Outputs
@@ -27,8 +26,6 @@ Basic:
       id: build_rpm
       with:
         spec_file: my_app.spec
-        sources: |
-          path/to/source.tar.gz
 
     - name: Upload RPM
         uses: actions/upload-release-asset@v1
@@ -49,8 +46,6 @@ With variables:
       id: build_rpm
       with:
         spec_file: my_app.spec
-        sources: |
-          path/to/source.tar.gz
         variables: |
           _version=1.0.0
           _foo=bar
