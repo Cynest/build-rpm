@@ -24,10 +24,12 @@ async function run(): Promise<void> {
     )}`
     const inputVariables = parseInputVariables(core.getInput('variables'))
 
-//    const inputSources = parseInputSources(core.getInput('sources'))
-//    const inputSources = core.getInput('sources') ? parseInputSources(core.getInput('sources'))
-    let inputSources;
-    if (core.getInput('sources')) { const inputSources = parseInputSources(core.getInput('sources')) }
+    //    const inputSources = parseInputSources(core.getInput('sources'))
+    //    const inputSources = core.getInput('sources') ? parseInputSources(core.getInput('sources'))
+    let inputSources
+    if (core.getInput('sources')) {
+      const inputSources = parseInputSources(core.getInput('sources'))
+    }
 
     // Init rpmbuild dir tree
     await exec('rpmdev-setuptree')
@@ -38,11 +40,11 @@ async function run(): Promise<void> {
     core.debug('Done')
 
     // Copy sources to dir tree
-    if (core.getInput('sources')) 
-    core.debug(`Copying source files...`)
-    copyRpmSources(inputSources)
-    core.debug('Done')
-    ;
+    if (core.getInput('sources')) {
+      core.debug(`Copying source files...`)
+      copyRpmSources(inputSources)
+      core.debug('Done')
+    }
 
     // Create the action output RPM dir
     core.debug(`Creating the output dir: ${outputRpmDir}`)
