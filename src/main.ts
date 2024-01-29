@@ -24,7 +24,8 @@ async function run(): Promise<void> {
     )}`
     const inputVariables = parseInputVariables(core.getInput('variables'))
 
-    if (core.getInput('sources')) const inputSources = parseInputSources(core.getInput('sources'));
+//    const inputSources = parseInputSources(core.getInput('sources'))
+    const inputSources = core.getInput('sources') ? parseInputSources(core.getInput('sources'))
 
     // Init rpmbuild dir tree
     await exec('rpmdev-setuptree')
