@@ -26,7 +26,7 @@ async function run(): Promise<void> {
 
     //    const inputSources = parseInputSources(core.getInput('sources'))
     //    const inputSources = core.getInput('sources') ? parseInputSources(core.getInput('sources'))
-    //let inputSources
+    let inputSources
     //    if (core.getInput('sources')) {
     if (typeof core.getInput('sources') !== 'undefined') {
       const inputSources = parseInputSources(core.getInput('sources'))
@@ -41,7 +41,7 @@ async function run(): Promise<void> {
     core.debug('Done')
 
     // Copy sources to dir tree
-    if (typeof core.getInput('sources') !== 'undefined') {
+    if (typeof inputSources !== 'undefined') {
       core.debug(`Copying source files...`)
       copyRpmSources(inputSources)
       core.debug('Done')
