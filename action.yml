@@ -1,0 +1,24 @@
+name: 'Build RPM 📦'
+description: 'Build RPM packages. Supports RPM macros with --define.'
+author: 'Antikythera - Stefan Mojsilovic'
+inputs:
+  sources:
+    required: false
+    description: 'list of files to be used as RPM sources, delimited by new lines (optional)'
+  spec_file:
+    required: true
+    description: 'path to your rpm spec file (required)'
+  variables:
+    required: false
+    description: 'variables to be consumed in the spec file as rpmbuild macros, delimited by new lines (optional)'
+outputs:
+  rpm_package_name:
+    description: 'name of the RPM package'
+  rpm_package_path:
+    description: 'path to the built RPM package'
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/antikythera/build-rpm:v1'
+branding:
+  icon: 'package'
+  color: 'red'

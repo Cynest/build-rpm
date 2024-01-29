@@ -1,0 +1,46 @@
+{
+  "name": "build-rpm",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Github action for building RPM packages",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
+    "lint": "eslint src/**/*.ts",
+    "package": "ncc build --source-map --license licenses.txt",
+    "test": "jest",
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antikythera/build-rpm.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/exec": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@types/node": "^16.4.10",
+    "@typescript-eslint/parser": "^4.29.2",
+    "@vercel/ncc": "^0.25.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-github": "^4.1.1",
+    "eslint-plugin-jest": "^24.4.0",
+    "jest": "^24.9.0",
+    "jest-circus": "^26.6.3",
+    "js-yaml": "^3.14.0",
+    "prettier": "2.3.2",
+    "ts-jest": "^24.3.0",
+    "typescript": "^4.0.5"
+  }
+}
