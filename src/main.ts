@@ -5,14 +5,13 @@ import * as path from 'path'
 import {
   copyFileToDir,
   parseInputVariables,
-  parseInputSources,
   findFileByExt,
   validateInputSpecFile,
   VariableKeyPair
 } from './util'
 
 const rpmBuildTmp = `${process.env.HOME}/rpmbuild`
-const rpmSourcesTmp = `${rpmBuildTmp}/SOURCES`
+//const rpmSourcesTmp = `${rpmBuildTmp}/SOURCES`
 const targetRpmBuildTmp = `${rpmBuildTmp}/RPMS`
 const outputRpmDir = `${process.env.GITHUB_WORKSPACE}/RPMS`
 
@@ -74,11 +73,11 @@ async function run(): Promise<void> {
   }
 }
 
-function copyRpmSources(sources: string[]): void {
-  for (const source of sources) {
-    copyFileToDir(source, rpmSourcesTmp)
-  }
-}
+//function copyRpmSources(sources: string[]): void {
+//  for (const source of sources) {
+//    copyFileToDir(source, rpmSourcesTmp)
+//  }
+//}
 
 function buildRpmArgs(
   specFile: string,
